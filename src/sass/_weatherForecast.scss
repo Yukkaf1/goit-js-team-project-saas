@@ -28,7 +28,18 @@
     padding-top: 32px;
     padding-bottom: 32px;
 
+&_Week {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+    position: absolute; 
+    right: 0%;
+    top: 0;
+
+    background:gray;
+    color: white;
+}
 }
 
 

@@ -7,8 +7,11 @@ const URL = 'https://api.openweathermap.org/data/2.5/weather';
 const URL2 = 'https://api.openweathermap.org/data/2.5/forecast';
 const API_KEY = 'be0f81a8f9f4c462088b51501fa506a7'
 
-const weatherBtn = document.querySelector('#loadWeater')
+const weatherWeek = document.querySelector('#weatherWeek');
 const weatherEl = document.querySelector('#root'); 
+
+
+
 day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
 
@@ -117,13 +120,26 @@ const fetchWeather7day = async (lat=90.0000, lon=-135.0000, units='metric') => {
              console.log(day2.dt_txt, day2.main.temp, day2.weather[0].description)
              console.log(day3.dt_txt, day3.main.temp, day3.weather[0].description)
              console.log(day4.dt_txt, day4.main.temp, day4.weather[0].description)
+
+          
+            //  weatherWeek.innerHTML =  `
+            //       <div class="weather_week-card">
+            //       <div class="weather_week-info">
+            //       <p class="weather_week-item"><b>*</b>${day1.dt_txt} ${Math.round(day1.main.temp)} <sup>&deg;</sup> ${day1.weather[0].description}</p>
+            //         <p class="weather_week-item"><b>*</b>${day2.dt_txt} ${Math.round(day2.main.temp)} <sup>&deg;</sup>${day2.weather[0].description}</p>
+            //         <p class="weather_week-item"><b>*</b>${day3.dt_txt} ${Math.round(day3.main.temp)} <sup>&deg;</sup>${day3.weather[0].description}}</p>
+            //         <p class="weather_week-item"><b>*</b>${day4.dt_txt} ${Math.round(day4.main.temp)} <sup>&deg;</sup> ${day4.weather[0].description}}</p>
+            //       </div>
+            //     </div>`;
             }
     )
-        }
+            }
 
-        fetchTemp();
+        
+            fetchTemp ()      
 
-// weatherBtn.addEventListener('click', fetchTemp)
+        // const weatherBtn = document.querySelector('#weatherWeek');
+        // weatherBtn.addEventListener('click', fetchTemp)
  
 
      
