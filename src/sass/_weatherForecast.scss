@@ -1,13 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-.tablet {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
-
 
 .weather {
 &_main-container {
@@ -184,6 +175,18 @@ border: none;
 text-align: center;
 }
 
+&_info-geo {
+    margin-top: 18px;
+    padding: 8px 14px;
+    
+    font-size: 20px;
+    color: white;
+    background: rgba(254, 254, 255, 0.3);
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    }
+
 &_weatherBtn:hover {
   background-color: rgba(254, 254, 255, 0.5);
 }
@@ -194,26 +197,6 @@ text-align: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
-
-&_week-info {
-font-size: 12px;
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-align-items: center;
-padding-left: 25px;
-}
-
-&__week-item {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    margin: 0;
-    padding: 0;
-    text-transform: capitalize;
 }
 
 
@@ -443,7 +426,7 @@ padding-left: 25px;
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
-        font-size: 12px;
+        font-size: 20px;
         margin: 0;
         text-transform: capitalize;
     
@@ -478,6 +461,39 @@ padding-left: 25px;
         flex-direction: column;
         align-items: center;
     }
+
+    &_week-list {
+        flex-flow: column wrap;
+        place-content: space-between flex-end;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: flex-start;
+
+    }
+    
+    &_week-info {
+        font-size: 20px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        align-items: center;
+     
+        }
+        
+        &__week-item {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            text-transform: capitalize;
+        }
     }
     
     @media screen and (min-width: 786px) {
@@ -499,7 +515,7 @@ padding-left: 25px;
         }
     
         &_weather-today {
-            font-size: 14px;
+            font-size: 36px;
         }
     
         &_weather-name::before {

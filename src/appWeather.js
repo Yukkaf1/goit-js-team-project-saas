@@ -135,67 +135,45 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
   
         <div class="weather2_city-info">
             <p class = "weather2_weather-today">${moment(new Date(day0.dt*1000)).format('ddd DD MMM LT')}</p>
-            <p class = "weather2_city-name">
-                <span class = "weather2_weather-name">${data.city.name}</span>
-            </p>
-         </div>
+   
     </div>
+
+    </div>
+    <div class = "weather2_info-down">
+    <p class = "weather2_city-name">
+        <span class = "weather2_weather-name">${data.city.name}</span>
+    </p>
+    </div>
+
+    <p class="weather2_weather-today"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
+
                   <div class="weather2_week-info">
-                  <table> 
-                  <p class="weather2_weather-today"> Forecast at Same Time <br> 5 DAY ${moment(new Date(day0.dt*1000)).format('LT')}</p>
-              
-                  <tr>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item">${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
-                  </td>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item"></b>${moment(new Date(day1.dt*1000)).format('ddd DD MMM')}</p>
-                  </td>
-                  </tr>
-
-                  <tr>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
-                  </td>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item"></b>${moment(new Date(day2.dt*1000)).format('ddd DD MMM')}</p>
-                  </td>
-                  </tr>
-
-                  <tr>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
-                  </td>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item"></b>${moment(new Date(day3.dt*1000)).format('ddd DD MMM')}</p>
-                  </td>
-                  </tr>
-
-                  <tr>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
-                  </td>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item"></b>${moment(new Date(day4.dt*1000)).format('ddd DD MMM')}</p>
-                  </td>
-                  </tr>
-
-                  <tr>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
-                  </td>
-                  <td class="weather2_week-item>
-                  <p class="weather2_week-item"></b>${moment(new Date(day5.dt*1000)).format('ddd DD MMM')}</p>
-                  </td>
-                  </tr>
-    
-                  </table>
+          
+                  <div class="weather2_week-list">
+                  <ul>
+                  <li class="weather2_week-item">${Math.round(day1.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weather2_week-item"> ${Math.round(day2.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weather2_week-item"> ${Math.round(day3.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weather2_week-item"> ${Math.round(day4.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weather2_week-item"> ${Math.round(day5.main.temp)} <sup>&deg;</sup></li>
+                  </ul>
+                  </div>
+                  
+                  <div class="weather2_week-list">
+                  <ul class="weather2_week-list>
+                  <li class="weather2_week-item">${moment(new Date(day1.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weather2_week-item">${moment(new Date(day2.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weather2_week-item">${moment(new Date(day3.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weather2_week-item">${moment(new Date(day4.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weather2_week-item">${moment(new Date(day5.dt*1000)).format('ddd DD MMM')}</li>
+                  </ul>
+                  </div>
                   </div>
 
 
                   <div  class = "weather2_info-down">
                   <button  type="button" class="weather2_weatherBtn" id="loadWeater" >weather for week</button>
-              </div>
+                  </div>
 
                 </div>`;
             }
