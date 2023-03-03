@@ -9,14 +9,14 @@ const API_KEY = 'be0f81a8f9f4c462088b51501fa506a7'
 
 const weatherWeek = document.querySelector('#weatherWeek');
 const weatherEl = document.querySelector('#root'); 
-
+const weatherEl2 = document.querySelector('#root2');
 
 
 day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
 
 
-const fetchWeatherGeo = async (lat=90.0000, lon=-135.0000, units='metric') => {
+const fetchWeatherGeo = async (lat=33.44, lon=-94.04, units='metric') => {
   console.log('Есть гео')
  
   const { data } = await axios.get(`${URL}/?lat=${lat}&lon=${lon}&units=${units}&exclude=deyly&APPID=${API_KEY}`);
@@ -93,7 +93,7 @@ export default weatherApp;
 // ----------------------------- 7 DAY -------------------------------
 
 
-const fetchWeather7day = async (lat=90.0000, lon=-135.0000, units='metric') => {
+const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
   console.log('Есть гео')
  
   const { data } = await axios.get(`${URL2}?lat=${lat}&lon=${lon}&units=${units}&APPID=${API_KEY}`);
@@ -111,26 +111,93 @@ const fetchWeather7day = async (lat=90.0000, lon=-135.0000, units='metric') => {
     //       } else return response.json();
     //     })
     .then(data => {
+            const day0 = data.list[0]
             const day1 = data.list[8]
             const day2 = data.list[16]
             const day3 = data.list[24]
             const day4 = data.list[32]
+            const day5 = data.list[39]
 
-             console.log(day1.dt_txt, day1.main.temp, day1.weather[0].description)
-             console.log(day2.dt_txt, day2.main.temp, day2.weather[0].description)
-             console.log(day3.dt_txt, day3.main.temp, day3.weather[0].description)
-             console.log(day4.dt_txt, day4.main.temp, day4.weather[0].description)
+            console.log(moment(new Date(day1.dt*1000)).format('ddd DD MMM LT'), day1.main.temp, day1.weather[0].description)
+            console.log(moment(new Date(day2.dt*1000)).format('ddd DD MMM LT'), day2.main.temp, day2.weather[0].description)
+            console.log(moment(new Date(day3.dt*1000)).format('ddd DD MMM LT'), day3.main.temp, day3.weather[0].description)
+            console.log(moment(new Date(day4.dt*1000)).format('ddd DD MMM LT'), day4.main.temp, day4.weather[0].description)
+            console.log(moment(new Date(day5.dt*1000)).format('ddd DD MMM LT'), day5.main.temp, day5.weather[0].description)
 
           
-            //  weatherWeek.innerHTML =  `
-            //       <div class="weather_week-card">
-            //       <div class="weather_week-info">
-            //       <p class="weather_week-item"><b>*</b>${day1.dt_txt} ${Math.round(day1.main.temp)} <sup>&deg;</sup> ${day1.weather[0].description}</p>
-            //         <p class="weather_week-item"><b>*</b>${day2.dt_txt} ${Math.round(day2.main.temp)} <sup>&deg;</sup>${day2.weather[0].description}</p>
-            //         <p class="weather_week-item"><b>*</b>${day3.dt_txt} ${Math.round(day3.main.temp)} <sup>&deg;</sup>${day3.weather[0].description}}</p>
-            //         <p class="weather_week-item"><b>*</b>${day4.dt_txt} ${Math.round(day4.main.temp)} <sup>&deg;</sup> ${day4.weather[0].description}}</p>
-            //       </div>
-            //     </div>`;
+             weatherEl2.innerHTML =  `
+                  <div class="weather2_main-container">
+                  <div class="weather2_weather-nav">
+                  <div class="weather2_city-temp">
+                  ${Math.round(day1.main.temp)}
+                  <sup>&deg;</sup>
+                   </div>
+  
+        <div class="weather2_city-info">
+            <p class = "weather2_weather-today">${moment(new Date(day0.dt*1000)).format('ddd DD MMM LT')}</p>
+            <p class = "weather2_city-name">
+                <span class = "weather2_weather-name">${data.city.name}</span>
+            </p>
+         </div>
+    </div>
+                  <div class="weather2_week-info">
+                  <table> 
+                  <p class="weather2_weather-today"> Forecast at Same Time <br> 5 DAY ${moment(new Date(day0.dt*1000)).format('LT')}</p>
+              
+                  <tr>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item">${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
+                  </td>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item"></b>${moment(new Date(day1.dt*1000)).format('ddd DD MMM')}</p>
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
+                  </td>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item"></b>${moment(new Date(day2.dt*1000)).format('ddd DD MMM')}</p>
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
+                  </td>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item"></b>${moment(new Date(day3.dt*1000)).format('ddd DD MMM')}</p>
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
+                  </td>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item"></b>${moment(new Date(day4.dt*1000)).format('ddd DD MMM')}</p>
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item>${Math.round(day1.main.temp)} <sup>&deg;</sup> </p>
+                  </td>
+                  <td class="weather2_week-item>
+                  <p class="weather2_week-item"></b>${moment(new Date(day5.dt*1000)).format('ddd DD MMM')}</p>
+                  </td>
+                  </tr>
+    
+                  </table>
+                  </div>
+
+
+                  <div  class = "weather2_info-down">
+                  <button  type="button" class="weather2_weatherBtn" id="loadWeater" >weather for week</button>
+              </div>
+
+                </div>`;
             }
     )
             }
