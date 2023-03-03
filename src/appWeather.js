@@ -145,7 +145,7 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
     </p>
     </div>
 
-    <p class="weather2_weather-today"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
+    <p class="weather2_weather-forecast"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
 
                   <div class="weather2_week-info">
           
@@ -172,7 +172,7 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
 
 
                   <div  class = "weather2_info-down">
-                  <button  type="button" class="weather2_weatherBtn" id="loadWeater" >weather for week</button>
+                  <button  type="button" class="weather2_weatherBtn" id="loadWeater" >weather for day</button>
                   </div>
 
                 </div>`;
