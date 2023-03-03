@@ -105,11 +105,6 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
 
  function fetchTemp () {
     fetchWeather7day()
-    // .then(response => {
-    //     if (!response.ok) {
-    //         console.log('Oops, there is no country with that name');
-    //       } else return response.json();
-    //     })
     .then(data => {
             const day0 = data.list[0]
             const day1 = data.list[8]
@@ -127,21 +122,21 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
           
              weatherEl2.innerHTML =  `
                   <div class="weather2_main-container">
-                  <div class="weather2_weather-nav">
-                  <div class="weather2_city-temp">
+                  <div class="weather_weather-nav">
+                  <div class="weather_city-temp">
                   ${Math.round(day1.main.temp)}
                   <sup>&deg;</sup>
                    </div>
   
-        <div class="weather2_city-info">
+        <div class="weather_city-info">
             <p class = "weather2_weather-today">${moment(new Date(day0.dt*1000)).format('ddd DD MMM LT')}</p>
    
     </div>
 
     </div>
     <div class = "weather2_info-down">
-    <p class = "weather2_city-name">
-        <span class = "weather2_weather-name">${data.city.name}</span>
+    <p class = "weather_city-name">
+        <span class = "weather_weather-name">${data.city.name}</span>
     </p>
     </div>
 
@@ -172,7 +167,7 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
 
 
                   <div  class = "weather2_info-down">
-                  <button  type="button" class="weather2_weatherBtn" id="loadWeater" >weather for day</button>
+                  <button  type="button" class="weather_weatherBtn" id="loadWeater" >weather for day</button>
                   </div>
 
                 </div>`;
