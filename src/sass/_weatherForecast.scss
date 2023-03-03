@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+.visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    border: 0;
+
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+}
+
+
 .weather {
 &_main-container {
     display: flex;
@@ -287,14 +305,6 @@ text-align: center;
         text-align: center;
     }
     
-    &_info-date {
-        font-size: 28px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
     &_info-down {
         display: flex;
         flex-direction: column;
@@ -344,41 +354,29 @@ text-align: center;
             padding-top: 40px;
             padding-bottom: 60px;
         }
-    
-        &_city-temp {
-            font-size: 64px;
+
+        &_weather-forecast {
+            font-size: 218px;
         }
     
-        &_city-name {
+        &_weather-forecast {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
             font-size: 20px;
-        }
-    
-        &_weather-today {
-            font-size: 36px;
+            margin: 0;
+            padding-top: 10px;
+            text-transform: capitalize;
             text-align: center;
         }
-    
-        &_weather-name::before {
-            content: '';
-            width: 27px;
-            height: 27px;
-            margin-right: 8px;
-    
-        }
-    
-        &_info-icon {
-           width: 165px;
-           height: 158px;
-        }
-    
-        &_info-date {
-            font-size: 36px;
-        }
-    
-        &_weatherBtn {
-            margin-top: 28px;
-            padding: 9px 12px;
-        }
+        
+        &_week-info {
+            font-size: 24px;
+            }
+            
+            &__week-item {
+                font-size: 16px;
+            }
     }
     }
     

@@ -17,10 +17,8 @@ date = moment(new Date()).format('DD MMM YYYY')
 
 
 const fetchWeatherGeo = async (lat=33.44, lon=-94.04, units='metric') => {
-  console.log('Есть гео')
  
   const { data } = await axios.get(`${URL}/?lat=${lat}&lon=${lon}&units=${units}&exclude=deyly&APPID=${API_KEY}`);
-     console.log (data);
      return data;
  
  }
@@ -30,9 +28,10 @@ const weatherApp = () => {
     }
 
 const geoWeatherApp = () => {
+
+  weatherEl2.innerHTML = ''
       
       navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position.coords.latitude, position.coords.longitude);
         const lat = position.coords.latitude
         const lon = position.coords.longitude
         const units = 'metric'
@@ -50,8 +49,6 @@ const geoWeatherApp = () => {
     
 
 const renderWeather = (weather) => {
-console.log(weather.main.temp, weather.name, Math.round(weather.main.temp), weather.weather[0].icon, weather.weather[0].description, new Date().getDay(), new Date().getDate(), new Date().getFullYear(), new Date().getMonth());
-console.log(`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`);
 
 weatherEl.innerHTML = `
         
@@ -94,10 +91,8 @@ export default weatherApp;
 
 
 const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
-  console.log('Есть гео')
  
   const { data } = await axios.get(`${URL2}?lat=${lat}&lon=${lon}&units=${units}&APPID=${API_KEY}`);
-  console.log(data)
      return data;
  
  }
@@ -106,6 +101,9 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
  function fetchTemp () {
     fetchWeather7day()
     .then(data => {
+
+      weatherEl.innerHTML = ''
+
             const day0 = data.list[0]
             const day1 = data.list[8]
             const day2 = data.list[16]
@@ -113,11 +111,11 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
             const day4 = data.list[32]
             const day5 = data.list[39]
 
-            console.log(moment(new Date(day1.dt*1000)).format('ddd DD MMM LT'), day1.main.temp, day1.weather[0].description)
-            console.log(moment(new Date(day2.dt*1000)).format('ddd DD MMM LT'), day2.main.temp, day2.weather[0].description)
-            console.log(moment(new Date(day3.dt*1000)).format('ddd DD MMM LT'), day3.main.temp, day3.weather[0].description)
-            console.log(moment(new Date(day4.dt*1000)).format('ddd DD MMM LT'), day4.main.temp, day4.weather[0].description)
-            console.log(moment(new Date(day5.dt*1000)).format('ddd DD MMM LT'), day5.main.temp, day5.weather[0].description)
+            // console.log(moment(new Date(day1.dt*1000)).format('ddd DD MMM LT'), day1.main.temp, day1.weather[0].description)
+            // console.log(moment(new Date(day2.dt*1000)).format('ddd DD MMM LT'), day2.main.temp, day2.weather[0].description)
+            // console.log(moment(new Date(day3.dt*1000)).format('ddd DD MMM LT'), day3.main.temp, day3.weather[0].description)
+            // console.log(moment(new Date(day4.dt*1000)).format('ddd DD MMM LT'), day4.main.temp, day4.weather[0].description)
+            // console.log(moment(new Date(day5.dt*1000)).format('ddd DD MMM LT'), day5.main.temp, day5.weather[0].description)
 
           
              weatherEl2.innerHTML =  `
@@ -167,20 +165,20 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
 
 
                   <div  class = "weather2_info-down">
-                  <button  type="button" class="weather_weatherBtn" id="loadWeater" >weather for day</button>
+                  <button  type="button" class="weather_weatherBtn" id="loadWeater7day" >weather for day</button>
                   </div>
 
                 </div>`;
             }
     )
-            }
+            }    
 
-        
-            fetchTemp ()      
-
-        // const weatherBtn = document.querySelector('#weatherWeek');
-        // weatherBtn.addEventListener('click', fetchTemp)
+        const weatherBtn = document.querySelector('#loadWeater7day');
+        weatherBtn.addEventListener('click', fetchTemp)
  
+
+        const weatherBtn2 = document.querySelector('#loadWeater');
+        weatherBtn.addEventListener('click', geoWeatherApp)
 
      
  
