@@ -1,45 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .weather2 {
-    &_main-container {
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    
-        position: absolute; 
-        left: 0%;
-        top: 0;
-    
-        background:#4440F7;
-        color: white;
-        background-size: cover;
-        background-position: center;
-    
-        width: 288px;
-        height: 489px;
-    
-    
-        margin-top: 60px;
-    
-        box-sizing: border-box;
-        border-radius: 4px;
-        
-       
-        padding-top: 32px;
-        padding-bottom: 32px;
-    }
-    
-    &_weather-today {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        margin: 0;
-        padding-top: 10px;
-        text-transform: capitalize;
-    
-    }
 
     &_weather-forecast {
         font-family: 'Roboto';
@@ -50,12 +10,6 @@
         padding-top: 10px;
         text-transform: capitalize;
         text-align: center;
-    }
-    
-    &_info-down {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     &_week-list {
@@ -94,17 +48,6 @@
     
     @media screen and (min-width: 786px) {
         .weather2 {
-            &_main-container {
-            width: 353px;
-            height: 675px;
-    
-            padding-top: 40px;
-            padding-bottom: 60px;
-        }
-
-        &_weather-forecast {
-            font-size: 218px;
-        }
     
         &_weather-forecast {
             font-family: 'Roboto';
@@ -126,18 +69,6 @@
             }
     }
     }
-    
-    
-    @media screen and (min-width: 1280px) {
-        .weather {
-            &_main-container {
-            width: 395px;
-            height: 675px;
-        }
-    
-        &_info-date {
-            font-size: 46px;
-            
-        }
-    }
-    }
+
+
+  
