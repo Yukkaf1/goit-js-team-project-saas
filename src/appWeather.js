@@ -7,10 +7,11 @@ const URL = 'https://api.openweathermap.org/data/2.5/weather';
 const URL2 = 'https://api.openweathermap.org/data/2.5/forecast';
 const API_KEY = 'be0f81a8f9f4c462088b51501fa506a7'
 
-const weatherWeek = document.querySelector('#weatherWeek');
 const weatherEl = document.querySelector('#root'); 
 const weatherEl2 = document.querySelector('#root2');
-
+const weatherBtn1 = document.querySelector('#loadWeater');
+const weatherBtn = document.querySelector('#load-weather-test');
+const weatherBtn2 = document.querySelector('#load-weather-test2');
 
 day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
@@ -174,17 +175,12 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
                 </div>`;
             }
     )
-            }    
+            }   
+            
+            fetchTemp ()
 
-        // fetchTemp ()
-
-        // const weatherBtn = document.querySelector('#loadWeater7day');
         // weatherBtn.addEventListener('click', fetchTemp)
- 
+        // weatherBtn2.addEventListener('click', geoWeatherApp)
 
-        // const weatherBtn2 = document.querySelector('#loadWeater');
-        // weatherBtn.addEventListener('click', geoWeatherApp)
+        // weatherBtn1.addEventListener('click',  weatherApp)
 
-     
-  const weatherBtn = document.querySelector('#weatherLoad');
-        weatherBtn.addEventListener('click', fetchTemp)
