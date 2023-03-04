@@ -9,7 +9,6 @@ const URL2 = 'https://api.openweathermap.org/data/2.5/forecast';
 const API_KEY = 'be0f81a8f9f4c462088b51501fa506a7'
 
 const weatherEl = document.querySelector('#root'); 
-const weatherBtn1 = document.querySelector('#loadWeater');
 
 day =  moment(new Date()).format('ddd')
 date = moment(new Date()).format('DD MMM YYYY')
@@ -43,41 +42,37 @@ const geoWeatherApp = () => {
             .catch(error => {});
    
     }
-
-
     
-    
-
 const renderWeather = (weather) => {
 
 weatherEl.innerHTML = `
         
-        <div class="weather_main-container">
+        <div class="weatherBlock_main-container">
 
-        <div class="weather_weather-nav">
-        <div class="weather_city-temp">
+        <div class="weatherBlock_weather-nav">
+        <div class="weatherBlock_city-temp">
         ${Math.round(weather.main.temp)}
             <sup>&deg;</sup>
         </div>
   
-        <div class="weather_city-info">
-            <p class = "weather_weather-description">${weather.weather[0].description}</p>
-            <p class = "weather_city-name">
-                <span class = "weather_weather-name">${weather.name}</span>
+        <div class="weatherBlock_city-info">
+            <p class = "weatherBlock_weather-description">${weather.weather[0].description}</p>
+            <p class = "weatherBlock_city-name">
+                <span class = "weatherBlock_weather-name">${weather.name}</span>
 
             </p>
         
       </div>
     </div>
           
-              <div class="weather_info-icon">
-                  <img class="weather_city-icon" src="${`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}" alt="${weather.weather[0].description}"/>
+              <div class="weatherBlock_info-icon">
+                  <img class="weatherBlock_city-icon" src="${`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}" alt="${weather.weather[0].description}"/>
               </div>
   
-              <div  class = "weather_info-down">
-                <p class="weather_info-date"> ${day} <br> ${date} </p>
+              <div  class = "weatherBlock_info-down">
+                <p class="weatherBlock_info-date"> ${day} <br> ${date} </p>
 
-                <button  type="button" class="weather_weatherBtn" id="loadWeater" >weather for week</button>
+                <button  type="button" class="weatherBlock_weatherBtn" id="loadWeater" >weather for week</button>
               </div>
         `
 }
@@ -90,97 +85,91 @@ export default weatherApp;
 // // ----------------------------- 7 DAY -------------------------------
 
 
-// const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
+const fetchWeatherForecast = async (lat=33.44, lon=-94.04, units='metric') => {
  
-//   const { data } = await axios.get(`${URL2}?lat=${lat}&lon=${lon}&units=${units}&APPID=${API_KEY}`);
-//      return data;
+  const { data } = await axios.get(`${URL2}?lat=${lat}&lon=${lon}&units=${units}&APPID=${API_KEY}`);
+     console.log(data)
+     return data;
  
-//  }
+ }
 
-//  function fetchTemp () {
-//     fetchWeather7day()
-//     .then(data => {
+ const renderWeatherForecast = obj => {
+            const day0 = obj.list[0]
+            const day1 = obj.list[8]
+            const day2 = obj.list[16]
+            const day3 = obj.list[24]
+            const day4 = obj.list[32]
+            const day5 = obj.list[39]
 
-//             const day0 = data.list[0]
-//             const day1 = data.list[8]
-//             const day2 = data.list[16]
-//             const day3 = data.list[24]
-//             const day4 = data.list[32]
-//             const day5 = data.list[39]
+            console.log(moment(new Date(day1.dt*1000)).format('ddd DD MMM LT'), day1.main.temp, day1.weather[0].description)
+            console.log(moment(new Date(day2.dt*1000)).format('ddd DD MMM LT'), day2.main.temp, day2.weather[0].description)
+            console.log(moment(new Date(day3.dt*1000)).format('ddd DD MMM LT'), day3.main.temp, day3.weather[0].description)
+            console.log(moment(new Date(day4.dt*1000)).format('ddd DD MMM LT'), day4.main.temp, day4.weather[0].description)
+            console.log(moment(new Date(day5.dt*1000)).format('ddd DD MMM LT'), day5.main.temp, day5.weather[0].description)
 
-//             // console.log(moment(new Date(day1.dt*1000)).format('ddd DD MMM LT'), day1.main.temp, day1.weather[0].description)
-//             // console.log(moment(new Date(day2.dt*1000)).format('ddd DD MMM LT'), day2.main.temp, day2.weather[0].description)
-//             // console.log(moment(new Date(day3.dt*1000)).format('ddd DD MMM LT'), day3.main.temp, day3.weather[0].description)
-//             // console.log(moment(new Date(day4.dt*1000)).format('ddd DD MMM LT'), day4.main.temp, day4.weather[0].description)
-//             // console.log(moment(new Date(day5.dt*1000)).format('ddd DD MMM LT'), day5.main.temp, day5.weather[0].description)
+            weatherEl.innerHTML =  `
 
-          
-//              weatherEl.innerHTML =  `
+             <div class="weatherBlock_main-container">
 
-//              <div class="weather_main-container">
-
-//              <div class="weather_weather-nav">
-//              <div class="weather_city-temp">
-//              ${Math.round(day1.main.temp)}
-//                  <sup>&deg;</sup>
-//              </div>
+             <div class="weatherBlock_weather-nav">
+             <div class="weatherBlock_city-temp">
+             ${Math.round(day1.main.temp)}
+                 <sup>&deg;</sup>
+             </div>
        
-//              <div class="weather_city-info">
-//              <p class = "weather_weather-description">${moment(new Date(day0.dt*1000)).format('ddd DD MMM')}</p>
-//                  <p class = "weather_city-name">
-//                      <span class = "weather_weather-name">${data.city.name}</span>
-//                  </p>
+             <div class="weatherBlock_city-info">
+             <p class = "weatherBlock_weather-description">${moment(new Date(day0.dt*1000)).format('ddd DD MMM')}</p>
+                 <p class = "weatherBlock_city-name">
+                     <span class = "weatherBlock_weather-name">${obj.city.name}</span>
+                 </p>
              
-//            </div>
-//          </div>
+           </div>
+         </div>
 
-//     <p class="weather2_weather-forecast"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
+    <p class="weatherForecast_weather-forecast"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
 
-//                   <div class="weather2_week-info">
+                  <div class="weatherForecast_week-info">
           
-//                   <div class="weather2_week-list">
-//                   <ul>
-//                   <li class="weather2_week-item">${Math.round(day1.main.temp)} <sup>&deg;</sup></li>
-//                   <li class="weather2_week-item"> ${Math.round(day2.main.temp)} <sup>&deg;</sup></li>
-//                   <li class="weather2_week-item"> ${Math.round(day3.main.temp)} <sup>&deg;</sup></li>
-//                   <li class="weather2_week-item"> ${Math.round(day4.main.temp)} <sup>&deg;</sup></li>
-//                   <li class="weather2_week-item"> ${Math.round(day5.main.temp)} <sup>&deg;</sup></li>
-//                   </ul>
-//                   </div>
+                  <div class="weatherForecast_week-list">
+                  <ul>
+                  <li class="weatherForecast_week-item">${Math.round(day1.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weatherForecast_week-item"> ${Math.round(day2.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weatherForecast_week-item"> ${Math.round(day3.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weatherForecast_week-item"> ${Math.round(day4.main.temp)} <sup>&deg;</sup></li>
+                  <li class="weatherForecast_week-item"> ${Math.round(day5.main.temp)} <sup>&deg;</sup></li>
+                  </ul>
+                  </div>
                   
-//                   <div class="weather2_week-list">
-//                   <ul class="weather2_week-list>
-//                   <li class="weather2_week-item">${moment(new Date(day1.dt*1000)).format('ddd DD MMM')}</li>
-//                   <li class="weather2_week-item">${moment(new Date(day2.dt*1000)).format('ddd DD MMM')}</li>
-//                   <li class="weather2_week-item">${moment(new Date(day3.dt*1000)).format('ddd DD MMM')}</li>
-//                   <li class="weather2_week-item">${moment(new Date(day4.dt*1000)).format('ddd DD MMM')}</li>
-//                   <li class="weather2_week-item">${moment(new Date(day5.dt*1000)).format('ddd DD MMM')}</li>
-//                   </ul>
-//                   </div>
-//                   </div>
+                  <div class="weatherForecast_week-list">
+                  <ul class="weatherForecast_week-list>
+                  <li class="weatherForecast_week-item">${moment(new Date(day1.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weatherForecast_week-item">${moment(new Date(day2.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weatherForecast_week-item">${moment(new Date(day3.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weatherForecast_week-item">${moment(new Date(day4.dt*1000)).format('ddd DD MMM')}</li>
+                  <li class="weatherForecast_week-item">${moment(new Date(day5.dt*1000)).format('ddd DD MMM')}</li>
+                  </ul>
+                  </div>
+                  </div>
 
-//               <div  class = "weather_info-down">
-//                 <button  type="button" class="weather_weatherBtnForecast" id="loadWeater" >weather for day</button>
-//               </div>
+              <div  class = "weatherBlock_info-down">
+                <button  type="button" class="weatherForecast_weatherBtn" id="loadWeater" >weather for day</button>
+              </div>
                 
-//                 `;
-//             }
-//     )
-//             }   
-            
-//             // fetchTemp ()
+                `;
+ }
 
-        
+            document.addEventListener("click", (event)=>{
+              if(event.target?.classList.contains("weatherForecast_weatherBtn")){
+                weatherEl.innerHTML = '';
+                geoWeatherApp()
+              }
+              })
 
-//             document.addEventListener("click", (event)=>{
-//               if(event.target?.classList.contains("weather_weatherBtnForecast")){
-//                 geoWeatherApp()
-//               }
-//               })
-
-//               document.addEventListener("click", (event)=>{
-//                 if(event.target?.classList.contains("weather_weatherBtn")){
-//                   fetchTemp ()
-//                 }
-//                 })
+              document.addEventListener("click", (event)=>{
+                if(event.target?.classList.contains("weatherBlock_weatherBtn")){
+                  weatherEl.innerHTML = '';
+                  fetchWeatherForecast()
+                  .then(renderWeatherForecast)
+                }
+                })
 

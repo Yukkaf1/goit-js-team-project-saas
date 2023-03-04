@@ -5,7 +5,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import axios from 'axios';
-import weatherApp from './appWeather';
+import geoWeatherApp from './appWeather';
 
 
 const BASE_URL = 'https://pixabay.com/api/';
