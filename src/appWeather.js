@@ -173,6 +173,8 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
     )
             }    
 
+            fetchTemp ()
+
         const weatherBtn = document.querySelector('#loadWeater7day');
         weatherBtn.addEventListener('click', fetchTemp)
  
