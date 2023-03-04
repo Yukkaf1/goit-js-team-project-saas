@@ -46,6 +46,9 @@ const geoWeatherApp = () => {
             .catch(error => {});
    
     }
+
+
+    
     
 
 const renderWeather = (weather) => {
@@ -173,14 +176,15 @@ const fetchWeather7day = async (lat=33.44, lon=-94.04, units='metric') => {
     )
             }    
 
-            fetchTemp ()
+        // fetchTemp ()
 
-        const weatherBtn = document.querySelector('#loadWeater7day');
-        weatherBtn.addEventListener('click', fetchTemp)
+        // const weatherBtn = document.querySelector('#loadWeater7day');
+        // weatherBtn.addEventListener('click', fetchTemp)
  
 
-        const weatherBtn2 = document.querySelector('#loadWeater');
-        weatherBtn.addEventListener('click', geoWeatherApp)
+        // const weatherBtn2 = document.querySelector('#loadWeater');
+        // weatherBtn.addEventListener('click', geoWeatherApp)
 
      
- 
+  const weatherBtn = document.querySelector('#weatherLoad');
+        weatherBtn.addEventListener('click', fetchTemp)
