@@ -40,38 +40,23 @@
         text-align: center;
     }
 
-    &_week-list {
-        flex-flow: column wrap;
-        place-content: space-between flex-end;
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: flex-start;
+    &_week-info {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
 
+    &__week-list-grid {
+        display: grid;
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 80px auto 80px; 
+        gap: 15px 10px;
     }
     
-    &_week-info {
-        font-size: 20px;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-        text-align: center;
-        align-items: center;
-     
-        }
-        
-        &__week-item {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 12px;
-            margin: 0;
-            padding: 0;
-            text-transform: capitalize;
-        }
+    &_item-a {
+  grid-column: 1;
+  grid-row: 1;
+}
 
         &_weatherBtn {
             margin-top: 18px;

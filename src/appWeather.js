@@ -71,16 +71,15 @@ weatherEl.innerHTML = `
   
               <div  class = "weatherBlock_info-down">
                 <p class="weatherBlock_info-date"> ${day} <br> ${date} </p>
+              </div>
 
+              <div class = "weatherBlock_Btn">
                 <button  type="button" class="weatherBlock_weatherBtn" id="loadWeater" >weather for week</button>
               </div>
         `
 }
 
 weatherApp();
-
-export default weatherApp;
-
 
 // // ----------------------------- 7 DAY -------------------------------
 
@@ -92,6 +91,24 @@ const fetchWeatherForecast = async (lat=33.44, lon=-94.04, units='metric') => {
      return data;
  
  }
+
+ const geoWeatherForecast = () => {
+     
+  navigator.geolocation.getCurrentPosition(function(position) {
+    const lat = position.coords.latitude
+    const lon = position.coords.longitude
+    const units = 'metric'
+
+
+    fetchWeatherForecast(lat, lon, units)
+    .then(renderWeatherForecast)
+        .catch(error => {});
+  }) ??
+  fetchWeatherForecast()
+  .then(renderWeatherForecast)
+        .catch(error => {});
+
+}
 
  const renderWeatherForecast = obj => {
             const day0 = obj.list[0]
@@ -126,32 +143,38 @@ const fetchWeatherForecast = async (lat=33.44, lon=-94.04, units='metric') => {
            </div>
          </div>
 
-    <p class="weatherForecast_weather-forecast"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
+                  <p class="weatherForecast_weather-forecast"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
 
                   <div class="weatherForecast_week-info">
           
-                  <div class="weatherForecast_week-list">
-                  <ul>
-                  <li class="weatherForecast_week-item">${Math.round(day1.main.temp)} <sup>&deg;</sup></li>
-                  <li class="weatherForecast_week-item"> ${Math.round(day2.main.temp)} <sup>&deg;</sup></li>
-                  <li class="weatherForecast_week-item"> ${Math.round(day3.main.temp)} <sup>&deg;</sup></li>
-                  <li class="weatherForecast_week-item"> ${Math.round(day4.main.temp)} <sup>&deg;</sup></li>
-                  <li class="weatherForecast_week-item"> ${Math.round(day5.main.temp)} <sup>&deg;</sup></li>
+                  <ul class="weatherForecast_week-list-grid">
+
+                  <li class="weatherForecast_item-a">
+                  <p>${Math.round(day1.main.temp)} <sup>&deg;</sup></p>
+                  <p> ${moment(new Date(day1.dt*1000)).format('ddd DD MMM')} </p>
+                  </li>
+                  <li class="weatherForecast_week-item">
+                  <p>${Math.round(day2.main.temp)} <sup>&deg;</sup></p>
+                  <p> ${moment(new Date(day2.dt*1000)).format('ddd DD MMM')} </p>
+                  </li>
+                  <li class="weatherForecast_week-item">
+                  <p>${Math.round(day3.main.temp)} <sup>&deg;</sup></p>
+                  <p> ${moment(new Date(day3.dt*1000)).format('ddd DD MMM')} </p>
+                  </li>
+                  <li class="weatherForecast_week-item">
+                  <p>${Math.round(day4.main.temp)} <sup>&deg;</sup></p>
+                  <p> ${moment(new Date(day4.dt*1000)).format('ddd DD MMM')} </p>
+                  </li>
+                  <li class="weatherForecast_week-item">
+                  <p>${Math.round(day5.main.temp)} <sup>&deg;</sup></p>
+                  <p> ${moment(new Date(day5.dt*1000)).format('ddd DD MMM')} </p>
+                  </li>
+          
                   </ul>
-                  </div>
-                  
-                  <div class="weatherForecast_week-list">
-                  <ul class="weatherForecast_week-list>
-                  <li class="weatherForecast_week-item">${moment(new Date(day1.dt*1000)).format('ddd DD MMM')}</li>
-                  <li class="weatherForecast_week-item">${moment(new Date(day2.dt*1000)).format('ddd DD MMM')}</li>
-                  <li class="weatherForecast_week-item">${moment(new Date(day3.dt*1000)).format('ddd DD MMM')}</li>
-                  <li class="weatherForecast_week-item">${moment(new Date(day4.dt*1000)).format('ddd DD MMM')}</li>
-                  <li class="weatherForecast_week-item">${moment(new Date(day5.dt*1000)).format('ddd DD MMM')}</li>
-                  </ul>
-                  </div>
+
                   </div>
 
-              <div  class = "weatherBlock_info-down">
+              <div  class = "weatherBlock_Btn">
                 <button  type="button" class="weatherForecast_weatherBtn" id="loadWeater" >weather for day</button>
               </div>
                 
@@ -168,8 +191,10 @@ const fetchWeatherForecast = async (lat=33.44, lon=-94.04, units='metric') => {
               document.addEventListener("click", (event)=>{
                 if(event.target?.classList.contains("weatherBlock_weatherBtn")){
                   weatherEl.innerHTML = '';
-                  fetchWeatherForecast()
-                  .then(renderWeatherForecast)
+                  geoWeatherForecast()
                 }
-                })
+              }
+                  )
+
+export default weatherApp;
 

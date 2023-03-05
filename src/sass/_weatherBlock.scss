@@ -160,6 +160,13 @@ text-align: center;
     flex-direction: column;
     align-items: center;
 }
+
+&_Btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 }
 
 @media screen and (min-width: 786px) {
