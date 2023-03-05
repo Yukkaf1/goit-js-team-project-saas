@@ -145,34 +145,34 @@ const fetchWeatherForecast = async (lat=33.44, lon=-94.04, units='metric') => {
 
                   <p class="weatherForecast_weather-forecast"> 5-DAY Forecast ${moment(new Date(day0.dt*1000)).format('LT')}</p>
 
-                  <div class="weatherForecast_week-info">
+                  <div class="weatherForecast_week-info-grid">
           
-                  <ul class="weatherForecast_week-list-grid">
+                  <ul>
 
                   <li class="weatherForecast_item-a">
                   <p>${Math.round(day1.main.temp)} <sup>&deg;</sup></p>
                   <p> ${moment(new Date(day1.dt*1000)).format('ddd DD MMM')} </p>
                   </li>
-                  <li class="weatherForecast_week-item">
+                  <li class="weatherForecast_item-b">
                   <p>${Math.round(day2.main.temp)} <sup>&deg;</sup></p>
                   <p> ${moment(new Date(day2.dt*1000)).format('ddd DD MMM')} </p>
                   </li>
-                  <li class="weatherForecast_week-item">
+                  <li class="weatherForecast_item-c">
                   <p>${Math.round(day3.main.temp)} <sup>&deg;</sup></p>
                   <p> ${moment(new Date(day3.dt*1000)).format('ddd DD MMM')} </p>
                   </li>
-                  <li class="weatherForecast_week-item">
+                  <li class="weatherForecast_item-d">
                   <p>${Math.round(day4.main.temp)} <sup>&deg;</sup></p>
                   <p> ${moment(new Date(day4.dt*1000)).format('ddd DD MMM')} </p>
                   </li>
-                  <li class="weatherForecast_week-item">
+                  <li class="weatherForecast_item-e">
                   <p>${Math.round(day5.main.temp)} <sup>&deg;</sup></p>
                   <p> ${moment(new Date(day5.dt*1000)).format('ddd DD MMM')} </p>
                   </li>
           
                   </ul>
 
-                  </div>
+                </div> 
 
               <div  class = "weatherBlock_Btn">
                 <button  type="button" class="weatherForecast_weatherBtn" id="loadWeater" >weather for day</button>
